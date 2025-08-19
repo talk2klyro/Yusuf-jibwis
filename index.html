@@ -1,33 +1,42 @@
-<!<!DOCTYPE html><html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Cyber Man | Cyber Security Analyst</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&family=Great+Vibes&display=swap" rel="stylesheet">
   <style>
     body {
-      font-family: Arial, sans-serif;
+      font-family: 'Orbitron', sans-serif;
       margin: 0;
       padding: 0;
-      background: #0f172a;
+      background: linear-gradient(135deg, #0f172a, #1e293b, #0f172a);
+      background-size: 400% 400%;
+      animation: gradientBG 15s ease infinite;
       color: #f8fafc;
       text-align: center;
       overflow-x: hidden;
-    }header {
+    }@keyframes gradientBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+header {
   padding: 2rem 1rem;
   position: relative;
 }
 
 header h1 {
-  font-size: 2.5rem;
+  font-family: 'Great Vibes', cursive;
+  font-size: 3rem;
   margin: 0;
-  position: relative;
-  z-index: 2;
+  color: #38bdf8;
+  text-shadow: 0 0 15px rgba(56,189,248,0.6);
 }
 
 header p {
   font-size: 1.2rem;
   margin-top: .5rem;
-  position: relative;
   z-index: 2;
 }
 
@@ -41,15 +50,17 @@ nav a {
   display: inline-block;
   margin: .5rem 1rem;
   padding: .7rem 1.5rem;
-  background: rgba(255,255,255,0.1);
+  background: rgba(255,255,255,0.08);
+  backdrop-filter: blur(10px);
   border-radius: 30px;
   color: #fff;
   text-decoration: none;
-  transition: background .3s ease;
+  transition: transform .3s ease, background .3s ease;
 }
 
 nav a:hover {
-  background: rgba(255,255,255,0.3);
+  background: rgba(255,255,255,0.2);
+  transform: scale(1.05);
 }
 
 section {
@@ -92,6 +103,15 @@ section {
   }
 }
 
+.glass-card {
+  background: rgba(255,255,255,0.08);
+  backdrop-filter: blur(15px);
+  border-radius: 20px;
+  padding: 2rem;
+  margin: 1rem 0;
+  box-shadow: 0 0 20px rgba(0,0,0,0.2);
+}
+
 .portfolio img, .testimonials img {
   width: 100%;
   border-radius: 15px;
@@ -100,10 +120,11 @@ section {
 
 .testimonial-card {
   background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(10px);
   padding: 1rem;
   border-radius: 15px;
   margin: 1rem 0;
-}
+}q
 
 footer {
   background: #1e293b;
@@ -117,21 +138,38 @@ footer a {
   margin: 0 .5rem;
 }
 
+.cta-button {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 1rem 2rem;
+  background: #38bdf8;
+  color: #0f172a;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: transform .3s ease, background .3s ease;
+}
+
+.cta-button:hover {
+  background: #0ea5e9;
+  transform: scale(1.1);
+}
+
   </style>
 </head>
 <body>
   <div class="halo one"></div>
   <div class="halo two"></div>  <header>
-    <h1>CYBER MAN</h1>
-    <p>Cyber Security Analyst | Potiskum</p>
+    <h1>Cyber Man</h1>
+    <p>💻 Cyber Security Analyst | 📍 Potiskum</p>
     <nav>
-      <a href="#services">Services</a>
-      <a href="#portfolio">Portfolio</a>
-      <a href="#testimonials">Testimonials</a>
-      <a href="#contact">Contact</a>
+      <a href="#services">🛡️ Services</a>
+      <a href="#portfolio">📂 Portfolio</a>
+      <a href="#testimonials">💬 Testimonials</a>
+      <a href="#contact">📞 Contact</a>
     </nav>
-  </header>  <section id="services">
-    <h2>Services</h2>
+  </header>  <section id="services" class="glass-card">
+    <h2>🛡️ Services</h2>
     <p>Step to Secure Your Social Media</p>
     <ul style="list-style:none;padding:0;">
       <li>✔️ Account Security Audits</li>
@@ -139,13 +177,14 @@ footer a {
       <li>✔️ Phishing Awareness Training</li>
       <li>✔️ Two-Factor Authentication Setup</li>
     </ul>
-  </section>  <section id="portfolio" class="portfolio">
-    <h2>Portfolio</h2>
+    <a href="https://wa.me/2349069642529" class="cta-button">📲 Secure My Account Now</a>
+  </section>  <section id="portfolio" class="portfolio glass-card">
+    <h2>📂 Portfolio</h2>
     <img src="https://source.unsplash.com/800x400/?cybersecurity" alt="Portfolio Work 1">
     <img src="https://source.unsplash.com/800x400/?technology" alt="Portfolio Work 2">
     <img src="https://source.unsplash.com/800x400/?hacker" alt="Portfolio Work 3">
-  </section>  <section id="testimonials" class="testimonials">
-    <h2>Testimonials</h2>
+  </section>  <section id="testimonials" class="testimonials glass-card">
+    <h2>💬 Testimonials</h2>
     <div class="testimonial-card">
       <p>“Cyber Man helped me secure my accounts after a phishing attempt. Highly recommended!”</p>
       <small>- Aisha M., Entrepreneur</small>
@@ -154,11 +193,12 @@ footer a {
       <p>“Very professional and knowledgeable. My Facebook and TikTok are now much safer.”</p>
       <small>- Musa K., Content Creator</small>
     </div>
-  </section>  <section id="contact">
-    <h2>Contact</h2>
+  </section>  <section id="contact" class="glass-card">
+    <h2>📞 Contact</h2>
     <p>WhatsApp: <a href="https://wa.me/2349069642529">09069642529</a></p>
-    <p>TikTok: <a href="https://tiktok.com/@Cyberman">Cyberman</a></p>
+    <p>TikTok: <a href="https://www.tiktok.com/@cyber.man001?_t=ZM-8z0rGWgdTi2&_r=1">@cyber.man001</a></p>
     <p>Facebook: <a href="https://facebook.com/yusufismailmuhammed">Yusuf Ismail Muhammed</a></p>
+    <a href="https://wa.me/2349069642529" class="cta-button">💬 Chat on WhatsApp</a>
   </section>  <footer>
     <p>© 2025 Cyber Man. All Rights Reserved.</p>
   </footer>
