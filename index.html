@@ -67,6 +67,14 @@ section {
   padding: 3rem 1rem;
   max-width: 800px;
   margin: auto;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 1s ease, transform 1s ease;
+}
+
+section.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .halo {
@@ -110,12 +118,24 @@ section {
   padding: 2rem;
   margin: 1rem 0;
   box-shadow: 0 0 20px rgba(0,0,0,0.2);
+  transition: transform .4s ease, box-shadow .4s ease;
+}
+
+.glass-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 0 30px rgba(56,189,248,0.4);
 }
 
 .portfolio img, .testimonials img {
   width: 100%;
   border-radius: 15px;
   margin-bottom: 1rem;
+  transition: transform .4s ease, box-shadow .4s ease;
+}
+
+.portfolio img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px rgba(56,189,248,0.5);
 }
 
 .testimonial-card {
@@ -124,7 +144,15 @@ section {
   padding: 1rem;
   border-radius: 15px;
   margin: 1rem 0;
-}q
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 1s ease, transform 1s ease;
+}
+
+.testimonial-card.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
 
 footer {
   background: #1e293b;
@@ -201,6 +229,18 @@ footer a {
     <a href="https://wa.me/2349069642529" class="cta-button">💬 Chat on WhatsApp</a>
   </section>  <footer>
     <p>© 2025 Cyber Man. All Rights Reserved.</p>
-  </footer>
-</body>
-</html>
+  </footer>  <script>
+    // Intersection Observer for fade-in animations
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.2 });
+
+    document.querySelectorAll('section, .testimonial-card').forEach(el => {
+      observer.observe(el);
+    });
+  </script></body>
+        </html>
