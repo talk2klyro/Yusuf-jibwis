@@ -1,215 +1,183 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Cyber Man | Link in Bio</title>
-  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Orbitron:wght@400;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Syncopate:wght@700&family=Michroma&family=Manrope:wght@400;600&display=swap" rel="stylesheet">
+
   <style>
-    /* Reset & Base */
-    * {margin: 0; padding: 0; box-sizing: border-box;}
+    /* RESET */
+    * {margin:0; padding:0; box-sizing:border-box;}
     body {
-      font-family: 'Inter', sans-serif;
-      color: white;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      overflow-x: hidden;
-      position: relative;
+      background:#000;
+      color:#fff;
+      font-family:'Manrope', sans-serif;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      justify-content:center;
+      min-height:100vh;
+      text-align:center;
+      position:relative;
+      overflow:hidden;
     }
 
-    /* Living Fabric Background */
-    canvas#fabric {
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: -1;
-      background: radial-gradient(circle at center, #0a0a0f 0%, #050507 100%);
+    /* LIVING FABRIC BACKGROUND */
+    canvas {
+      position:absolute;
+      top:0; left:0;
+      width:100%; height:100%;
+      z-index:-1;
     }
 
-    /* Typography */
+    /* TYPOGRAPHY */
     h1 {
-      font-family: 'Great Vibes', cursive;
-      font-size: 3rem;
-      margin-bottom: 0.5rem;
-      color: #00eaff;
-      text-shadow: 0 0 15px rgba(0,234,255,0.7);
+      font-family:'Syncopate', sans-serif;
+      font-size:2.5rem;
+      margin-bottom:0.3em;
+      letter-spacing:2px;
+      animation:fadeDown 1.5s ease;
     }
     h2 {
-      font-family: 'Orbitron', sans-serif;
-      font-size: 1.2rem;
-      letter-spacing: 2px;
-      color: #cfcfcf;
-      margin-bottom: 2rem;
+      font-family:'Michroma', sans-serif;
+      font-size:1rem;
+      margin-bottom:1.5em;
+      color:#0ff;
+      animation:fadeUp 2s ease;
     }
     p {
-      max-width: 500px;
-      margin: 0 auto 2rem auto;
-      color: #d9d9d9;
+      max-width:320px;
+      font-size:0.9rem;
+      line-height:1.4;
+      margin-bottom:2em;
+      color:#ccc;
+      animation:fadeUp 2.2s ease;
     }
 
-    /* Buttons */
+    /* BUTTONS */
     .links {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-      width: 90%;
-      max-width: 350px;
+      display:flex;
+      flex-direction:column;
+      gap:1em;
+      width:100%;
+      max-width:300px;
     }
     .btn {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.5rem;
-      padding: 1rem;
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.2);
-      border-radius: 12px;
-      font-weight: 600;
-      color: white;
-      text-decoration: none;
-      transition: all 0.3s ease;
-      opacity: 0; 
-      transform: translateY(20px);
+      background:rgba(255,255,255,0.05);
+      border:1px solid rgba(0,255,255,0.4);
+      padding:0.9em;
+      border-radius:12px;
+      color:#fff;
+      text-decoration:none;
+      font-weight:600;
+      font-family:'Manrope', sans-serif;
+      backdrop-filter:blur(10px);
+      transition:all 0.3s ease;
+      animation:slideUp 1s ease forwards;
+      opacity:0;
     }
+    .btn:nth-child(1){animation-delay:0.3s;}
+    .btn:nth-child(2){animation-delay:0.5s;}
+    .btn:nth-child(3){animation-delay:0.7s;}
+    .btn:nth-child(4){animation-delay:0.9s;}
+
     .btn:hover {
-      background: rgba(0,234,255,0.1);
-      border-color: #00eaff;
-      transform: translateY(-3px);
-      box-shadow: 0 0 15px rgba(0,234,255,0.5);
-    }
-    .btn.revealed {
-      opacity: 1;
-      transform: translateY(0);
+      background:rgba(0,255,255,0.1);
+      transform:translateY(-2px);
+      border-color:#0ff;
     }
 
-    /* Floating WhatsApp Button */
-    .whatsapp-float {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background: #25D366;
-      color: white;
-      border-radius: 50%;
-      width: 60px;
-      height: 60px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 2rem;
-      text-decoration: none;
-      box-shadow: 0 0 15px rgba(37,211,102,0.6);
-      animation: pulse 2s infinite;
-      z-index: 10;
+    /* FLOATING WHATSAPP */
+    .floating-whatsapp {
+      position:fixed;
+      bottom:20px; right:20px;
+      background:#25D366;
+      color:#fff;
+      border-radius:50%;
+      width:55px; height:55px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:1.5rem;
+      text-decoration:none;
+      animation:pulse 2.5s infinite;
+      box-shadow:0 0 12px rgba(37,211,102,0.8);
     }
+
+    /* ANIMATIONS */
+    @keyframes fadeDown {from{opacity:0; transform:translateY(-20px);} to{opacity:1; transform:translateY(0);}}
+    @keyframes fadeUp {from{opacity:0; transform:translateY(20px);} to{opacity:1; transform:translateY(0);}}
+    @keyframes slideUp {to{opacity:1; transform:translateY(0);}}
     @keyframes pulse {
-      0% { box-shadow: 0 0 10px rgba(37,211,102,0.6); }
-      50% { box-shadow: 0 0 25px rgba(37,211,102,1); }
-      100% { box-shadow: 0 0 10px rgba(37,211,102,0.6); }
-    }
-
-    /* Reveal Animations */
-    .fade-down, .fade-up {
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 1s ease, transform 1s ease;
-    }
-    .fade-down { transform: translateY(-20px); }
-    .revealed {
-      opacity: 1 !important;
-      transform: translateY(0) !important;
+      0%,100%{transform:scale(1);}
+      50%{transform:scale(1.15);}
     }
   </style>
 </head>
 <body>
   <canvas id="fabric"></canvas>
 
-  <h1 class="fade-down">Cyber Man</h1>
-  <h2 class="fade-up">Cyber Security Analyst · Potiskum</h2>
-  <p class="fade-up">Step to secure your social media and protect your online presence.  
-     Connect with me through any platform below:</p>
+  <h1>CYBER MAN</h1>
+  <h2>Cyber Security Analyst · Potiskum</h2>
+  <p>Helping you stay safe online — practical steps to secure your social media accounts and protect your digital identity.</p>
 
   <div class="links">
-    <a class="btn" href="https://wa.me/2349069642529" target="_blank"><span>💬</span> Chat on WhatsApp</a>
-    <a class="btn" href="https://www.tiktok.com/@cyber.man001" target="_blank"><span>🎵</span> Follow on TikTok</a>
-    <a class="btn" href="https://www.facebook.com/yusuf.ismail.muhammed" target="_blank"><span>📘</span> Connect on Facebook</a>
-    <a class="btn" href="https://www.instagram.com/yusuf_cyber01" target="_blank"><span>📸</span> Follow on Instagram</a>
+    <a href="https://wa.me/2349069642529" class="btn">💬 Chat on WhatsApp</a>
+    <a href="https://www.tiktok.com/@cyber.man001" class="btn">🎵 Follow on TikTok</a>
+    <a href="https://www.facebook.com/yusuf.ismail.muhammed" class="btn">📘 Connect on Facebook</a>
+    <a href="https://www.instagram.com/yusuf_cyber01" class="btn">📸 Follow on Instagram</a>
   </div>
 
-  <!-- Floating WhatsApp -->
-  <a href="https://wa.me/2349069642529" class="whatsapp-float" target="_blank">💬</a>
+  <a href="https://wa.me/2349069642529" class="floating-whatsapp">💬</a>
 
   <script>
-    // Living Fabric Effect
-    const canvas = document.getElementById('fabric');
-    const ctx = canvas.getContext('2d');
-    let width, height, threads = [];
-
-    function resize() {
-      width = canvas.width = window.innerWidth;
-      height = canvas.height = window.innerHeight;
+    // LIVING FABRIC BACKGROUND EFFECT
+    const canvas=document.getElementById('fabric');
+    const ctx=canvas.getContext('2d');
+    let w,h,threads=[];
+    function resize(){
+      w=canvas.width=window.innerWidth;
+      h=canvas.height=window.innerHeight;
     }
-    window.addEventListener('resize', resize);
+    window.addEventListener('resize',resize);
     resize();
 
-    class Thread {
-      constructor() { this.reset(); }
-      reset() {
-        this.x = Math.random() * width;
-        this.y = Math.random() * height;
-        this.len = 100 + Math.random() * 200;
-        this.ang = Math.random() * Math.PI * 2;
-        this.speed = 0.002 + Math.random() * 0.004;
-        this.color = `hsla(${180 + Math.random() * 120}, 100%, 60%, 0.3)`;
+    class Thread{
+      constructor(){
+        this.x=Math.random()*w;
+        this.y=Math.random()*h;
+        this.len=80+Math.random()*60;
+        this.ang=Math.random()*Math.PI*2;
+        this.speed=0.002+Math.random()*0.004;
+        this.offset=Math.random()*1000;
       }
-      update() {
-        this.ang += this.speed;
-        this.x += Math.cos(this.ang) * 0.3;
-        this.y += Math.sin(this.ang) * 0.3;
-        if (this.x < -50 || this.x > width + 50 || this.y < -50 || this.y > height + 50) this.reset();
+      update(t){
+        this.ang+=Math.sin(t*this.speed+this.offset)*0.002;
       }
-      draw() {
-        ctx.strokeStyle = this.color;
+      draw(){
         ctx.beginPath();
-        ctx.moveTo(this.x, this.y);
-        ctx.lineTo(this.x + Math.cos(this.ang) * this.len, this.y + Math.sin(this.ang) * this.len);
+        ctx.moveTo(this.x,this.y);
+        ctx.lineTo(this.x+Math.cos(this.ang)*this.len,this.y+Math.sin(this.ang)*this.len);
+        ctx.strokeStyle='rgba(0,255,255,0.2)';
+        ctx.lineWidth=1;
         ctx.stroke();
       }
     }
 
-    function init() {
-      threads = [];
-      for (let i = 0; i < 40; i++) {
-        threads.push(new Thread());
-      }
-    }
+    for(let i=0;i<90;i++){threads.push(new Thread());}
 
-    function animate() {
-      ctx.clearRect(0, 0, width, height);
-      threads.forEach(t => { t.update(); t.draw(); });
+    function animate(t){
+      ctx.clearRect(0,0,w,h);
+      threads.forEach(th=>{
+        th.update(t);
+        th.draw();
+      });
       requestAnimationFrame(animate);
     }
-
-    init();
-    animate();
-
-    // Scroll Reveal
-    const revealElements = document.querySelectorAll('.fade-down, .fade-up, .btn');
-    function revealOnScroll() {
-      const triggerBottom = window.innerHeight * 0.85;
-      revealElements.forEach((el, i) => {
-        const boxTop = el.getBoundingClientRect().top;
-        if (boxTop < triggerBottom) {
-          setTimeout(() => el.classList.add('revealed'), i * 150);
-        }
-      });
-    }
-    window.addEventListener('scroll', revealOnScroll);
-    revealOnScroll();
+    animate(0);
   </script>
 </body>
 </html>
