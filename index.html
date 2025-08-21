@@ -1,183 +1,125 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Cyber Man | Link in Bio</title>
+<!doctype html>
+<html lang="en">  
+<head>  
+  <meta charset="utf-8" />  
+  <meta name="viewport" content="width=device-width, initial-scale=1" />  
+  <title>Cyber Man — Links</title>  
 
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Syncopate:wght@700&family=Michroma&family=Manrope:wght@400;600&display=swap" rel="stylesheet">
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>  
 
-  <style>
-    /* RESET */
-    * {margin:0; padding:0; box-sizing:border-box;}
-    body {
-      background:#000;
-      color:#fff;
-      font-family:'Manrope', sans-serif;
-      display:flex;
-      flex-direction:column;
-      align-items:center;
-      justify-content:center;
-      min-height:100vh;
-      text-align:center;
-      position:relative;
-      overflow:hidden;
-    }
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800&family=Share+Tech+Mono&display=swap" rel="stylesheet">
 
-    /* LIVING FABRIC BACKGROUND */
-    canvas {
-      position:absolute;
-      top:0; left:0;
-      width:100%; height:100%;
-      z-index:-1;
-    }
+  <style>  
+    :root {  
+      --primary: #00f6ff;  
+      --accent: #ff007a;  
+      --bg-dark: #050510;  
+      --card-bg: rgba(15,15,25,0.85);  
+      --glow: 0 0 10px var(--primary), 0 0 20px var(--accent);  
+    }  
 
-    /* TYPOGRAPHY */
-    h1 {
-      font-family:'Syncopate', sans-serif;
-      font-size:2.5rem;
-      margin-bottom:0.3em;
-      letter-spacing:2px;
-      animation:fadeDown 1.5s ease;
-    }
-    h2 {
-      font-family:'Michroma', sans-serif;
-      font-size:1rem;
-      margin-bottom:1.5em;
-      color:#0ff;
-      animation:fadeUp 2s ease;
-    }
-    p {
-      max-width:320px;
-      font-size:0.9rem;
-      line-height:1.4;
-      margin-bottom:2em;
-      color:#ccc;
-      animation:fadeUp 2.2s ease;
-    }
+    body {  
+      font-family: 'Share Tech Mono', monospace;  
+      background: radial-gradient(circle at top, #0f0f1a, #050510 70%);  
+      color: var(--primary);  
+      min-height: 100vh;  
+      display: flex;  
+      flex-direction: column;  
+      align-items: center;  
+      justify-content: center;  
+      overflow-x: hidden;
+    }  
 
-    /* BUTTONS */
-    .links {
-      display:flex;
-      flex-direction:column;
-      gap:1em;
-      width:100%;
-      max-width:300px;
-    }
-    .btn {
-      background:rgba(255,255,255,0.05);
-      border:1px solid rgba(0,255,255,0.4);
-      padding:0.9em;
-      border-radius:12px;
-      color:#fff;
-      text-decoration:none;
-      font-weight:600;
-      font-family:'Manrope', sans-serif;
-      backdrop-filter:blur(10px);
-      transition:all 0.3s ease;
-      animation:slideUp 1s ease forwards;
-      opacity:0;
-    }
-    .btn:nth-child(1){animation-delay:0.3s;}
-    .btn:nth-child(2){animation-delay:0.5s;}
-    .btn:nth-child(3){animation-delay:0.7s;}
-    .btn:nth-child(4){animation-delay:0.9s;}
+    .card {  
+      background: var(--card-bg);  
+      border: 1px solid var(--primary);  
+      border-radius: 1rem;  
+      padding: 2rem;  
+      box-shadow: var(--glow);  
+      backdrop-filter: blur(8px);
+    }  
 
-    .btn:hover {
-      background:rgba(0,255,255,0.1);
-      transform:translateY(-2px);
-      border-color:#0ff;
-    }
+    .title-font {  
+      font-family: 'Orbitron', sans-serif;  
+      color: var(--accent);  
+      text-shadow: var(--glow);  
+    }  
 
-    /* FLOATING WHATSAPP */
-    .floating-whatsapp {
-      position:fixed;
-      bottom:20px; right:20px;
-      background:#25D366;
-      color:#fff;
-      border-radius:50%;
-      width:55px; height:55px;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      font-size:1.5rem;
-      text-decoration:none;
-      animation:pulse 2.5s infinite;
-      box-shadow:0 0 12px rgba(37,211,102,0.8);
-    }
+    .link-btn {  
+      transition: all .3s ease;  
+      border: 1px solid var(--primary);  
+      background: transparent;  
+      text-shadow: var(--glow);  
+    }  
 
-    /* ANIMATIONS */
-    @keyframes fadeDown {from{opacity:0; transform:translateY(-20px);} to{opacity:1; transform:translateY(0);}}
-    @keyframes fadeUp {from{opacity:0; transform:translateY(20px);} to{opacity:1; transform:translateY(0);}}
-    @keyframes slideUp {to{opacity:1; transform:translateY(0);}}
-    @keyframes pulse {
-      0%,100%{transform:scale(1);}
-      50%{transform:scale(1.15);}
-    }
-  </style>
-</head>
-<body>
-  <canvas id="fabric"></canvas>
+    .link-btn:hover {  
+      background: var(--primary);  
+      color: #000;  
+      transform: scale(1.05);  
+      box-shadow: var(--glow);  
+    }  
 
-  <h1>CYBER MAN</h1>
-  <h2>Cyber Security Analyst · Potiskum</h2>
-  <p>Helping you stay safe online — practical steps to secure your social media accounts and protect your digital identity.</p>
+    .footer {  
+      margin-top: 2rem;  
+      font-size: 0.75rem;  
+      color: #aaa;  
+    }  
+  </style>  
+</head>  
 
-  <div class="links">
-    <a href="https://wa.me/2349069642529" class="btn">💬 Chat on WhatsApp</a>
-    <a href="https://www.tiktok.com/@cyber.man001" class="btn">🎵 Follow on TikTok</a>
-    <a href="https://www.facebook.com/yusuf.ismail.muhammed" class="btn">📘 Connect on Facebook</a>
-    <a href="https://www.instagram.com/yusuf_cyber01" class="btn">📸 Follow on Instagram</a>
-  </div>
+<body>  
+  <div class="card text-center max-w-md w-full">  
+    <!-- Profile -->  
+    <img src="https://i.postimg.cc/DZhK4QKC/IMG-20250820-WA0062.jpg" alt="Cyber Man" class="w-28 h-28 rounded-full mx-auto border-4 border-[var(--accent)] object-cover shadow-lg">  
+    
+    <h1 class="mt-4 text-3xl title-font">Cyber Man</h1>  
+    <p class="text-sm italic text-gray-300">Cyber Security Analyst</p>  
+    <p class="mt-1 text-xs text-gray-400">Potiskum — Protecting Digital Identity</p>  
 
-  <a href="https://wa.me/2349069642529" class="floating-whatsapp">💬</a>
+    <!-- Links -->  
+    <div class="mt-6 flex flex-col gap-4">  
+      <a href="https://wa.me/2349069642529?text=Hello%20Cyber%20Man%2C%20I%20need%20help%20with%20cyber%20security"  
+         target="_blank"  
+         class="link-btn block py-3 rounded-lg font-semibold text-[var(--primary)]">  
+        💬 Chat on WhatsApp  
+      </a>  
 
-  <script>
-    // LIVING FABRIC BACKGROUND EFFECT
-    const canvas=document.getElementById('fabric');
-    const ctx=canvas.getContext('2d');
-    let w,h,threads=[];
-    function resize(){
-      w=canvas.width=window.innerWidth;
-      h=canvas.height=window.innerHeight;
-    }
-    window.addEventListener('resize',resize);
-    resize();
+      <a href="https://www.tiktok.com/@cyber.man001" target="_blank"   
+         class="link-btn block py-3 rounded-lg font-semibold text-[var(--primary)]">  
+        🎵 TikTok Profile  
+      </a>  
 
-    class Thread{
-      constructor(){
-        this.x=Math.random()*w;
-        this.y=Math.random()*h;
-        this.len=80+Math.random()*60;
-        this.ang=Math.random()*Math.PI*2;
-        this.speed=0.002+Math.random()*0.004;
-        this.offset=Math.random()*1000;
-      }
-      update(t){
-        this.ang+=Math.sin(t*this.speed+this.offset)*0.002;
-      }
-      draw(){
-        ctx.beginPath();
-        ctx.moveTo(this.x,this.y);
-        ctx.lineTo(this.x+Math.cos(this.ang)*this.len,this.y+Math.sin(this.ang)*this.len);
-        ctx.strokeStyle='rgba(0,255,255,0.2)';
-        ctx.lineWidth=1;
-        ctx.stroke();
-      }
-    }
+      <a href="https://facebook.com/yusuf.ismailmuhammed" target="_blank"   
+         class="link-btn block py-3 rounded-lg font-semibold text-[var(--primary)]">  
+        📘 Facebook  
+      </a>  
 
-    for(let i=0;i<90;i++){threads.push(new Thread());}
+      <a href="https://instagram.com/yusuf_cyber01" target="_blank"   
+         class="link-btn block py-3 rounded-lg font-semibold text-[var(--primary)]">  
+        📸 Instagram  
+      </a>  
 
-    function animate(t){
-      ctx.clearRect(0,0,w,h);
-      threads.forEach(th=>{
-        th.update(t);
-        th.draw();
-      });
-      requestAnimationFrame(animate);
-    }
-    animate(0);
-  </script>
-</body>
+      <!-- Google Earth Location -->
+      <a href="https://earth.google.com/web/@11.7123,11.0763,5000a,35d,0h,0t,0r"
+         target="_blank"   
+         class="link-btn block py-3 rounded-lg font-semibold text-[var(--primary)]">  
+        📍 Find Me in Potiskum  
+      </a>  
+
+      <a href="tel:+2349069642529"   
+         class="link-btn block py-3 rounded-lg font-semibold text-[var(--primary)]">  
+        📞 Call Me  
+      </a>  
+    </div>  
+
+    <!-- Footer -->  
+    <p class="footer">© <span id="year"></span> Cyber Man</p>  
+  </div>  
+
+  <script>  
+    document.getElementById('year').textContent = new Date().getFullYear();  
+  </script>  
+</body>  
 </html>
